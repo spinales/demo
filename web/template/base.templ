@@ -1,0 +1,56 @@
+package templates
+
+import "construccion_demo/internal/models"
+import "strconv"
+
+templ home(prdcts []models.Product) {
+    <section>
+        <form action="/" method="POST">
+            <input type="search" placeholder="product to search" name="search" />
+            <input type="submit" value="Search" />
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Stock</th>
+                    <th>Supplier</th>
+                    <th>Unit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @products(prdcts)
+            </tbody>
+        </table>
+    </section>
+}
+
+templ products(prdcts []models.Product) {
+    for _, product := range prdcts {
+        <tr>
+            <td style="bg-red-500">{ product.Name }</td>
+            <td>{ strconv.FormatFloat(product.Price, 'f', 2, 64) }</td>
+            <td>{ product.Category }</td>
+            <td>{ strconv.FormatUint(product.Stock, 10) }</td>
+            <td>{ product.Supplier }</td>
+            <td>{ product.Unit }</td>
+        </tr>
+    }
+}
+
+templ Home(products []models.Product) {
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8"/>
+			<title>Northwind</title>
+			<script src="https://cdn.tailwindcss.com"></script>
+		</head>
+		<body>
+			@home(products)
+		</body>
+	</html>
+}

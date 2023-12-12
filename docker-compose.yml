@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+
+  db:
+    container_name: ${DB_HOST}
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - postgresql_bin:/usr/lib/postgresql
+      - postgresql_data:/var/lib/postgresql/data
+      - ./northwind.sql:/docker-entrypoint-initdb.d/northwind.sql
+      - ./files:/files
+    ports:
+      - "${DB_PORT}:5432"
+    networks:
+      - db
+
+  app:
+    container_name: app
+    image: demo:latest
+    environment:
+      PORT: ${PORT}
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_PORT: ${DB_PORT}
+    ports:
+      - "${PORT}:${PORT}"
+    depends_on:
+      - db
+    networks:
+      - db
+
+networks:
+  db:
+    driver: bridge
+
+volumes:
+  postgresql_data:
+    driver: local
+  postgresql_bin:
+    driver: local
