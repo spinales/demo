@@ -7,7 +7,6 @@ import (
 	"net/http"
 )
 
-// Home todo: make tests
 func (s service) Home(w http.ResponseWriter, r *http.Request) {
 	var products *[]models.Product
 	err := r.ParseForm()
@@ -18,9 +17,13 @@ func (s service) Home(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.FormValue("search") != "" {
-		products = s.ProductService.SearchProductsByName(r.FormValue("search"))
+		products, err = s.ProductService.SearchProductsByName(r.FormValue("search"))
 	} else {
-		products = s.ProductService.GetProducts()
+		products, err = s.ProductService.GetProducts()
+	}
+
+	if err != nil {
+		return
 	}
 
 	err = templates.Home(*products).Render(r.Context(), w)
