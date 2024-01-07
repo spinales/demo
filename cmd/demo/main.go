@@ -9,10 +9,6 @@ import (
 	"os"
 )
 
-// todo: CI/CD
-// todo: make tests
-// todo: integration tests
-
 func main() {
 	// load secrets read from os
 	err := godotenv.Load()
