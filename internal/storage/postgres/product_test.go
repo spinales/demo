@@ -6,6 +6,7 @@ import (
 	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"log/slog"
 	"os"
 	"testing"
 )
@@ -15,7 +16,7 @@ var service ProductService
 func TestMain(m *testing.M) {
 	err := godotenv.Load("../../../.env")
 	if err != nil {
-		panic(err.Error())
+		slog.Error(err.Error())
 	}
 
 	host := os.Getenv("DB_HOST")
