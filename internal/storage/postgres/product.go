@@ -11,7 +11,6 @@ type ProductService struct {
 	DB *gorm.DB
 }
 
-// GetProducts todo: make tests
 func (s *ProductService) GetProducts() (*[]models.Product, error) {
 	var products []models.Product
 	if err := s.DB.Raw("select product_name as name, c.category_name as category, s.company_name as supplier, " +
@@ -25,7 +24,6 @@ func (s *ProductService) GetProducts() (*[]models.Product, error) {
 	return &products, nil
 }
 
-// SearchProductsByName todo: make tests
 func (s *ProductService) SearchProductsByName(name string) (*[]models.Product, error) {
 	var products []models.Product
 	if err := s.DB.Raw("select product_name as name, c.category_name as category, s.company_name as supplier, "+
