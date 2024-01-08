@@ -26,7 +26,7 @@ sudo ufw allow 'Nginx HTTP'
 sudo ufw status
 systemctl status nginx
 # this a template for reverse proxy
-sudo sh -c 'printf "server {\n\t\tlisten 80;\n\t\tlisten [::]:80;\n\t\tlisten 443;\n\t\tlisten [::]:443;\n\n\t\tserver_name ${IP};\n\n\n\t\tproxy_set_header Host $host;\n\t\tproxy_set_header X-Real-IP $remote_addr;\n\t\tproxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n\t\tproxy_set_header X-Forwarded-Proto $scheme;\n\n\t\tlocation / {\n\t\t\t\tproxy_pass http://127.0.0.1:8080/;\n\t\t}\n\n}" > /etc/nginx/conf.d/default.conf'
+sudo sh -c 'printf "server {\n\t\tlisten 80;\n\t\tlisten [::]:80;\n\t\tlisten 443;\n\t\tlisten [::]:443;\n\n\t\tserver_name \${IP};\n\n\n\t\tproxy_set_header Host \$host;\n\t\tproxy_set_header X-Real-IP \$remote_addr;\n\t\tproxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;\n\t\tproxy_set_header X-Forwarded-Proto \$scheme;\n\n\t\tlocation / {\n\t\t\tproxy_pass http://127.0.0.1:8080/;\n\t\t}\n\n}" > /etc/nginx/conf.d/default.conf'
 nginx -t
 nginx -s reload
 

@@ -24,7 +24,7 @@ func New(port, host, user, password, database, dbport string) *service {
 }
 
 func createDatabase(host, user, password, database, port string) *gorm.DB {
-	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s", host, user, password, database, port)
+	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable", host, user, password, database, port)
 	var db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		slog.Error(err.Error())
