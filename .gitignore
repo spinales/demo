@@ -199,5 +199,6 @@ go.work
 # Android studio 3.1+ serialized cache file
 
 .env
+notes.txt
 tmp/
 files/
