@@ -5,7 +5,9 @@ import "strconv"
 
 templ home(prdcts []models.Product) {
     <section>
-        <form action="/" method="POST">
+        <form action="/" method="POST" class="w-96">
+            <input type="text" class="py-1 px-1 block w-full border-red-500 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none" placeholder="This is placeholder" />
+
             <input type="search" placeholder="product to search" name="search" />
             <input type="submit" value="Search" />
         </form>
@@ -49,7 +51,7 @@ templ Home(products []models.Product) {
 			<title>Northwind</title>
 			<script src="https://cdn.tailwindcss.com"></script>
 		</head>
-		<body>
+		<body class="m-4">
 			@home(products)
 		</body>
 	</html>
