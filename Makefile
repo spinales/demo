@@ -1,6 +1,7 @@
 SHELL=/bin/bash
 
 run:
+	pack build demo --env-file .env --builder paketobuildpacks/builder-jammy-tiny
 	docker compose -f docker-compose.yml up || { docker compose -f docker-compose.yml down; exit 0; }
 
 build:
@@ -11,7 +12,6 @@ build:
 dev:
 	templ generate
 	go build -o ./build/demo ./cmd/demo
-	pack build demo --env-file .env --builder paketobuildpacks/builder-jammy-tiny
 	docker compose -f docker-compose-dev.yml up -d
 	sleep 3
 	./build/demo || { docker compose -f docker-compose-dev.yml down; exit 0; }

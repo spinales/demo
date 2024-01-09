@@ -25,7 +25,7 @@ func home(prdcts []models.Product) templ.Component {
 			var_1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, err = templBuffer.WriteString("<section><form action=\"/\" method=\"POST\"><input type=\"search\" placeholder=\"product to search\" name=\"search\"><input type=\"submit\" value=\"Search\"></form><table><thead><tr><th>")
+		_, err = templBuffer.WriteString("<section><form action=\"/\" method=\"POST\" class=\"w-96\"><input type=\"text\" class=\"py-1 px-1 block w-full border-red-500 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none\" placeholder=\"This is placeholder\"><input type=\"search\" placeholder=\"product to search\" name=\"search\"><input type=\"submit\" value=\"Search\"></form><table><thead><tr><th>")
 		if err != nil {
 			return err
 		}
@@ -209,7 +209,7 @@ func Home(products []models.Product) templ.Component {
 		if err != nil {
 			return err
 		}
-		_, err = templBuffer.WriteString("</script></head><body>")
+		_, err = templBuffer.WriteString("</script></head><body class=\"m-4\">")
 		if err != nil {
 			return err
 		}
