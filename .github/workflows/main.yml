@@ -9,6 +9,14 @@ on:
   pull_request:
     branches: [ "dev", "qa", "prod" ]
 
+env:
+  PORT: ${{secrets.PORT}}
+  DB_HOST: ${{secrets.DB_HOST}}
+  DB_USER: ${{secrets.DB_USER}}
+  DB_PASSWORD: ${{secrets.DB_PASSWORD}}
+  DB_DATABASE: ${{secrets.DB_DATABASE}}
+  DB_PORT: ${{secrets.DB_PORT}}
+
 jobs:
 
   build:
@@ -20,11 +28,6 @@ jobs:
       uses: actions/setup-go@v4
       with:
         go-version: '1.21'
-
-    - name: 'Create env file'
-      run: |
-        touch .env
-        echo ${{secrets.ENV_CONTENT}} >> .env
 
     - name: Build
       run: go build -v ./...
