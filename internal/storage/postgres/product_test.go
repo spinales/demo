@@ -25,7 +25,7 @@ func TestMain(m *testing.M) {
 	database := os.Getenv("DB_DATABASE")
 	dbPort := os.Getenv("DB_PORT")
 
-	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%v sslmode=disable", host, user, password, database, dbPort)
+	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%v sslmode=prefer", host, user, password, database, dbPort)
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic("Can't connect to storage to make tests...")

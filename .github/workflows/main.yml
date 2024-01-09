@@ -15,15 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: isbang/compose-action@v1.5.1
-      with:
-        compose-file: "./docker-compose-dev.yml"
-      env:
-        DB_HOST: ${{ secrets.DB_HOST }}
-        DB_USER: ${{ secrets.DB_USER }}
-        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-        DB_DATABASE: ${{ secrets.DB_DATABASE }}
-        DB_PORT: ${{ secrets.DB_PORT }}
 
     - name: Set up Go
       uses: actions/setup-go@v4
@@ -34,9 +25,6 @@ jobs:
       run: |
         touch .env
         echo ${{secrets.ENV_CONTENT}} >> .env
-
-    - name: Run Docker Compose
-      run: docker compose -f docker-compose-dev.yml up -d
 
     - name: Build
       run: go build -v ./...
