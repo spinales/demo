@@ -5,40 +5,93 @@ import "strconv"
 
 templ home(prdcts []models.Product) {
     <section>
-        <form action="/" method="POST" class="w-96">
-            <input type="text" class="py-1 px-1 block w-full border-red-500 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none" placeholder="This is placeholder" />
 
-            <input type="search" placeholder="product to search" name="search" />
-            <input type="submit" value="Search" />
+        <form action="/" method="POST" class="m-4">
+            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    </svg>
+                </div>
+                <input type="search" id="default-search" name="search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Product to search"/>
+                <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Search</button>
+            </div>
         </form>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Category</th>
-                    <th>Stock</th>
-                    <th>Supplier</th>
-                    <th>Unit</th>
-                </tr>
-            </thead>
-            <tbody>
-                @products(prdcts)
-            </tbody>
-        </table>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-4 mb-8">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+                <thead class="text-xs text-white bg-gray-900">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Product name
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Price
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Category
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Stock
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Supplier
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Unit
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                   @products(prdcts)
+                </tbody>
+            </table>
+        </div>
+
+        <footer class="fixed bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://flowbite.com/" class="hover:underline">Camelot™</a>. All Rights Reserved.
+            </span>
+            <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline">Contact</a>
+                </li>
+            </ul>
+        </footer>
+
     </section>
 }
 
 templ products(prdcts []models.Product) {
     for _, product := range prdcts {
-        <tr>
-            <td style="bg-red-500">{ product.Name }</td>
-            <td>{ strconv.FormatFloat(product.Price, 'f', 2, 64) }</td>
-            <td>{ product.Category }</td>
-            <td>{ strconv.FormatUint(product.Stock, 10) }</td>
-            <td>{ product.Supplier }</td>
-            <td>{ product.Unit }</td>
+        <tr class="bg-white border-b">
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                { product.Name }
+            </th>
+            <td class="px-6 py-4">
+                $ { strconv.FormatFloat(product.Price, 'f', 2, 64) }
+            </td>
+            <td class="px-6 py-4">
+                { product.Category }
+            </td>
+            <td class="px-6 py-4">
+                { strconv.FormatUint(product.Stock, 10) }
+            </td>
+            <td class="px-6 py-4">
+                { product.Supplier }
+            </td>
+            <td class="px-6 py-4">
+                { product.Unit }
+            </td>
         </tr>
     }
 }
@@ -50,6 +103,8 @@ templ Home(products []models.Product) {
 			<meta charset="UTF-8"/>
 			<title>Northwind</title>
 			<script src="https://cdn.tailwindcss.com"></script>
+			<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
 		</head>
 		<body class="m-4">
 			@home(products)

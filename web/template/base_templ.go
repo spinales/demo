@@ -25,57 +25,75 @@ func home(prdcts []models.Product) templ.Component {
 			var_1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, err = templBuffer.WriteString("<section><form action=\"/\" method=\"POST\" class=\"w-96\"><input type=\"text\" class=\"py-1 px-1 block w-full border-red-500 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none\" placeholder=\"This is placeholder\"><input type=\"search\" placeholder=\"product to search\" name=\"search\"><input type=\"submit\" value=\"Search\"></form><table><thead><tr><th>")
+		_, err = templBuffer.WriteString("<section><form action=\"/\" method=\"POST\" class=\"m-4\"><label for=\"default-search\" class=\"mb-2 text-sm font-medium text-gray-900 sr-only\">")
 		if err != nil {
 			return err
 		}
-		var_2 := `Name`
+		var_2 := `Search`
 		_, err = templBuffer.WriteString(var_2)
 		if err != nil {
 			return err
 		}
-		_, err = templBuffer.WriteString("</th><th>")
+		_, err = templBuffer.WriteString("</label><div class=\"relative\"><div class=\"absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none\"><svg class=\"w-4 h-4 text-gray-500\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 20 20\"><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z\"></path></svg></div><input type=\"search\" id=\"default-search\" name=\"search\" class=\"block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500\" placeholder=\"Product to search\"><button type=\"submit\" class=\"text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2\">")
 		if err != nil {
 			return err
 		}
-		var_3 := `Price`
+		var_3 := `Search`
 		_, err = templBuffer.WriteString(var_3)
 		if err != nil {
 			return err
 		}
-		_, err = templBuffer.WriteString("</th><th>")
+		_, err = templBuffer.WriteString("</button></div></form><div class=\"relative overflow-x-auto shadow-md sm:rounded-lg m-4 mb-8\"><table class=\"w-full text-sm text-left rtl:text-right text-gray-500\"><thead class=\"text-xs text-white bg-gray-900\"><tr><th scope=\"col\" class=\"px-6 py-3\">")
 		if err != nil {
 			return err
 		}
-		var_4 := `Category`
+		var_4 := `Product name`
 		_, err = templBuffer.WriteString(var_4)
 		if err != nil {
 			return err
 		}
-		_, err = templBuffer.WriteString("</th><th>")
+		_, err = templBuffer.WriteString("</th><th scope=\"col\" class=\"px-6 py-3\">")
 		if err != nil {
 			return err
 		}
-		var_5 := `Stock`
+		var_5 := `Price`
 		_, err = templBuffer.WriteString(var_5)
 		if err != nil {
 			return err
 		}
-		_, err = templBuffer.WriteString("</th><th>")
+		_, err = templBuffer.WriteString("</th><th scope=\"col\" class=\"px-6 py-3\">")
 		if err != nil {
 			return err
 		}
-		var_6 := `Supplier`
+		var_6 := `Category`
 		_, err = templBuffer.WriteString(var_6)
 		if err != nil {
 			return err
 		}
-		_, err = templBuffer.WriteString("</th><th>")
+		_, err = templBuffer.WriteString("</th><th scope=\"col\" class=\"px-6 py-3\">")
 		if err != nil {
 			return err
 		}
-		var_7 := `Unit`
+		var_7 := `Stock`
 		_, err = templBuffer.WriteString(var_7)
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("</th><th scope=\"col\" class=\"px-6 py-3\">")
+		if err != nil {
+			return err
+		}
+		var_8 := `Supplier`
+		_, err = templBuffer.WriteString(var_8)
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("</th><th scope=\"col\" class=\"px-6 py-3\">")
+		if err != nil {
+			return err
+		}
+		var_9 := `Unit`
+		_, err = templBuffer.WriteString(var_9)
 		if err != nil {
 			return err
 		}
@@ -87,7 +105,70 @@ func home(prdcts []models.Product) templ.Component {
 		if err != nil {
 			return err
 		}
-		_, err = templBuffer.WriteString("</tbody></table></section>")
+		_, err = templBuffer.WriteString("</tbody></table></div><footer class=\"fixed bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600\"><span class=\"text-sm text-gray-500 sm:text-center dark:text-gray-400\">")
+		if err != nil {
+			return err
+		}
+		var_10 := `© 2023 `
+		_, err = templBuffer.WriteString(var_10)
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("<a href=\"https://flowbite.com/\" class=\"hover:underline\">")
+		if err != nil {
+			return err
+		}
+		var_11 := `Camelot™`
+		_, err = templBuffer.WriteString(var_11)
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("</a>")
+		if err != nil {
+			return err
+		}
+		var_12 := `. All Rights Reserved.`
+		_, err = templBuffer.WriteString(var_12)
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("</span><ul class=\"flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0\"><li><a href=\"#\" class=\"hover:underline me-4 md:me-6\">")
+		if err != nil {
+			return err
+		}
+		var_13 := `About`
+		_, err = templBuffer.WriteString(var_13)
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("</a></li><li><a href=\"#\" class=\"hover:underline me-4 md:me-6\">")
+		if err != nil {
+			return err
+		}
+		var_14 := `Privacy Policy`
+		_, err = templBuffer.WriteString(var_14)
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("</a></li><li><a href=\"#\" class=\"hover:underline me-4 md:me-6\">")
+		if err != nil {
+			return err
+		}
+		var_15 := `Licensing`
+		_, err = templBuffer.WriteString(var_15)
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("</a></li><li><a href=\"#\" class=\"hover:underline\">")
+		if err != nil {
+			return err
+		}
+		var_16 := `Contact`
+		_, err = templBuffer.WriteString(var_16)
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("</a></li></ul></footer></section>")
 		if err != nil {
 			return err
 		}
@@ -106,63 +187,68 @@ func products(prdcts []models.Product) templ.Component {
 			defer templ.ReleaseBuffer(templBuffer)
 		}
 		ctx = templ.InitializeContext(ctx)
-		var_8 := templ.GetChildren(ctx)
-		if var_8 == nil {
-			var_8 = templ.NopComponent
+		var_17 := templ.GetChildren(ctx)
+		if var_17 == nil {
+			var_17 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
 		for _, product := range prdcts {
-			_, err = templBuffer.WriteString("<tr><td style=\"bg-red-500\">")
+			_, err = templBuffer.WriteString("<tr class=\"bg-white border-b\"><th scope=\"row\" class=\"px-6 py-4 font-medium text-gray-900 whitespace-nowrap\">")
 			if err != nil {
 				return err
 			}
-			var var_9 string = product.Name
-			_, err = templBuffer.WriteString(templ.EscapeString(var_9))
+			var var_18 string = product.Name
+			_, err = templBuffer.WriteString(templ.EscapeString(var_18))
 			if err != nil {
 				return err
 			}
-			_, err = templBuffer.WriteString("</td><td>")
+			_, err = templBuffer.WriteString("</th><td class=\"px-6 py-4\">")
 			if err != nil {
 				return err
 			}
-			var var_10 string = strconv.FormatFloat(product.Price, 'f', 2, 64)
-			_, err = templBuffer.WriteString(templ.EscapeString(var_10))
+			var_19 := `$ `
+			_, err = templBuffer.WriteString(var_19)
 			if err != nil {
 				return err
 			}
-			_, err = templBuffer.WriteString("</td><td>")
+			var var_20 string = strconv.FormatFloat(product.Price, 'f', 2, 64)
+			_, err = templBuffer.WriteString(templ.EscapeString(var_20))
 			if err != nil {
 				return err
 			}
-			var var_11 string = product.Category
-			_, err = templBuffer.WriteString(templ.EscapeString(var_11))
+			_, err = templBuffer.WriteString("</td><td class=\"px-6 py-4\">")
 			if err != nil {
 				return err
 			}
-			_, err = templBuffer.WriteString("</td><td>")
+			var var_21 string = product.Category
+			_, err = templBuffer.WriteString(templ.EscapeString(var_21))
 			if err != nil {
 				return err
 			}
-			var var_12 string = strconv.FormatUint(product.Stock, 10)
-			_, err = templBuffer.WriteString(templ.EscapeString(var_12))
+			_, err = templBuffer.WriteString("</td><td class=\"px-6 py-4\">")
 			if err != nil {
 				return err
 			}
-			_, err = templBuffer.WriteString("</td><td>")
+			var var_22 string = strconv.FormatUint(product.Stock, 10)
+			_, err = templBuffer.WriteString(templ.EscapeString(var_22))
 			if err != nil {
 				return err
 			}
-			var var_13 string = product.Supplier
-			_, err = templBuffer.WriteString(templ.EscapeString(var_13))
+			_, err = templBuffer.WriteString("</td><td class=\"px-6 py-4\">")
 			if err != nil {
 				return err
 			}
-			_, err = templBuffer.WriteString("</td><td>")
+			var var_23 string = product.Supplier
+			_, err = templBuffer.WriteString(templ.EscapeString(var_23))
 			if err != nil {
 				return err
 			}
-			var var_14 string = product.Unit
-			_, err = templBuffer.WriteString(templ.EscapeString(var_14))
+			_, err = templBuffer.WriteString("</td><td class=\"px-6 py-4\">")
+			if err != nil {
+				return err
+			}
+			var var_24 string = product.Unit
+			_, err = templBuffer.WriteString(templ.EscapeString(var_24))
 			if err != nil {
 				return err
 			}
@@ -186,17 +272,17 @@ func Home(products []models.Product) templ.Component {
 			defer templ.ReleaseBuffer(templBuffer)
 		}
 		ctx = templ.InitializeContext(ctx)
-		var_15 := templ.GetChildren(ctx)
-		if var_15 == nil {
-			var_15 = templ.NopComponent
+		var_25 := templ.GetChildren(ctx)
+		if var_25 == nil {
+			var_25 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
 		_, err = templBuffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title>")
 		if err != nil {
 			return err
 		}
-		var_16 := `Northwind`
-		_, err = templBuffer.WriteString(var_16)
+		var_26 := `Northwind`
+		_, err = templBuffer.WriteString(var_26)
 		if err != nil {
 			return err
 		}
@@ -204,8 +290,17 @@ func Home(products []models.Product) templ.Component {
 		if err != nil {
 			return err
 		}
-		var_17 := ``
-		_, err = templBuffer.WriteString(var_17)
+		var_27 := ``
+		_, err = templBuffer.WriteString(var_27)
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("</script><link href=\"https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css\" rel=\"stylesheet\"><script src=\"https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js\">")
+		if err != nil {
+			return err
+		}
+		var_28 := ``
+		_, err = templBuffer.WriteString(var_28)
 		if err != nil {
 			return err
 		}
