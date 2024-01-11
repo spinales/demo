@@ -7,4 +7,4 @@
 - Joel Mauricio 1105039
 - Saul Pinales - 1104770
 ## Sobre el proyecto
-Sistema de consulta de base de datos en linea
+Sistema de consulta de base de datos en linea.
