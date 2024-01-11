@@ -16,6 +16,7 @@ func main() {
 		slog.Error(err.Error())
 	}
 
+	// initiating environment variables
 	port := os.Getenv("PORT")
 	host := os.Getenv("DB_HOST")
 	user := os.Getenv("DB_USER")
